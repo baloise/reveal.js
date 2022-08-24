@@ -28,9 +28,7 @@ jobs:
       - name: Deploy 
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
           folder: site
-          clean: false
-          target_folder: ${env.GITHUB_REF_SLUG}
-          commit_message: Releasing tag/branch ${env.GITHUB_REF_SLUG}
+          clean: true
+          target-folder: ${env.GITHUB_REF_SLUG}
+          commit-message: Releasing tag/branch ${env.GITHUB_REF_SLUG}
