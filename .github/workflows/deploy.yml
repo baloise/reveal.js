@@ -7,6 +7,9 @@ jobs:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     steps:
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v4
+
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -29,5 +32,5 @@ jobs:
           branch: gh-pages
           folder: site
           clean: false
-          target_folder: ${GITHUB_REF##*/}
-          commit_message: Releasing tag/branch ${GITHUB_REF##*/}
+          target_folder: ${env.GITHUB_REF_SLUG}
+          commit_message: Releasing tag/branch ${env.GITHUB_REF_SLUG}
